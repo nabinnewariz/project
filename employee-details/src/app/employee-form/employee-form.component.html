@@ -1,2 +1,63 @@
-<p>employee-form works!</p>
-<router-outlet></router-outlet>
+<div class="container">
+    <form [formGroup]="employeForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="w-half pr-2">
+          <mat-label>Employee First Name</mat-label>
+          <input matInput placeholder="" value="" formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field class="w-half pl-2">
+            <mat-label>Employee Last Name</mat-label>
+            <input matInput placeholder="" value="" formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field class="w-half pr-2">
+            <mat-label>Employee ID</mat-label>
+            <input matInput placeholder="" value="" formControlName="empID">
+        </mat-form-field>
+        <mat-form-field class="w-half pl-2"> 
+            <mat-label>Year of Join</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date">
+              <input matEndDate placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        <mat-form-field class="w-half pr-2">
+            <mat-label>Employee Designation</mat-label>
+            <input matInput placeholder="" value="" formControlName="designation">
+        </mat-form-field>
+        <mat-form-field class="w-half pl-2">
+            <mat-label>Employee Experience</mat-label>
+            <input matInput placeholder="" value="" formControlName="experience">
+        </mat-form-field>
+        <mat-form-field class="w-full">
+            <mat-label>Employee Skills</mat-label>
+            <input matInput placeholder="" value="" formControlName="empSkills">
+        </mat-form-field>
+        <!-- <mat-form-field class="example-chip-list">
+            <mat-label>Employee Skills</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Fruit selection">
+              <mat-chip-row *ngFor="let fruit of skills" (removed)="remove(fruit)">
+                {{fruit}}
+                <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            </mat-chip-grid>
+            <input placeholder="New Fruit..." #fruitInput
+              [matChipInputFor]="chipGrid"
+              (matChipInputTokenEnd)="add($event)"/>
+            <mat-autocomplete #auto="matAutocomplete" >
+              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                {{fruit}}
+              </mat-option>
+            </mat-autocomplete>
+        </mat-form-field> -->
+        <mat-form-field class="w-half pr-2">
+            <mat-label>Employee Salary</mat-label>
+            <input matInput placeholder="" value="" formControlName="empSalary">
+        </mat-form-field>
+        <button class="w-full mb-2" type="submit" mat-raised-button color="primary">Submit</button>
+      </form>
+      <button class="w-full" mat-stroked-button color="primary" [disabled]="!submitted" routerLink="/employee-table">View Employee Table</button>
+</div>

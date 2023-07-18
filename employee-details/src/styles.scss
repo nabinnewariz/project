@@ -3,4 +3,25 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@mixin pad($pt, $pr, $pb, $pl) {
+    padding: $pt $pr $pb $pl;
+}
+@mixin mar($pt, $pr, $pb, $pl) {
+    margin: $pt $pr $pb $pl;
+}
+
+.w-half { width: 47%; }
+.w-full { width: 100%; }
+.p-2 { @include pad(10px, 10px, 10px, 10px) }
+.pl-2 { @include pad(0, 0, 0, 10px) }
+.pr-2 { @include pad(0, 10px, 0, 0) }
+.pb-2 { @include pad(0, 0, 10px, 0) }
+.pt-2 { @include pad(10px, 0, 0, 0) }
+
+.m-2 { @include mar(10px, 10px, 10px, 10px) }
+.ml-2 { @include mar(0, 0, 0, 10px) }
+.mr-2 { @include mar(0, 10px, 0, 0) }
+.mb-2 { @include mar(0, 0, 10px, 0) }
+.mt-2 { @include mar(10px, 0, 0, 0) }
