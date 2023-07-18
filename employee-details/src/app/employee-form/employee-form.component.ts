@@ -9,10 +9,10 @@ import { employeeFormSuccess } from '../store/employee.action';
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
-  styleUrls: ['./employee-form.component.scss']
+  styleUrls: ['./employee-form.component.scss'],
 })
-export class EmployeeFormComponent implements OnInit {  
-  employeForm : FormGroup = this.fb.group({
+export class EmployeeFormComponent implements OnInit {
+  employeForm: FormGroup = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     empID: ['', Validators.required],
@@ -21,15 +21,31 @@ export class EmployeeFormComponent implements OnInit {
     experience: ['', Validators.required],
     empSkills: ['', Validators.required],
     empSalary: ['', Validators.required],
-  });  
+  });
 
-  skills = ['html', 'css', 'javascript', 'scss', 'jquery', 'angular', 'react', 'nodejs', 'mongodb', 'express'];
+  skills = [
+    'html',
+    'css',
+    'javascript',
+    'scss',
+    'jquery',
+    'angular',
+    'react',
+    'nodejs',
+    'mongodb',
+    'express',
+  ];
   submitted: boolean = false;
 
-  constructor( private fb: FormBuilder, private router: Router, public service: EmployeeService, private store: Store) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    public service: EmployeeService,
+    private store: Store
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.employeForm.controls['firstName'].value,"form ")
+    console.log(this.employeForm.controls['firstName'].value, 'form ');
   }
   // add(event: MatChipInputEvent): void {
   //   const value = (event.value || '').trim();
@@ -58,9 +74,11 @@ export class EmployeeFormComponent implements OnInit {
   // }
 
   onSubmit() {
-    console.log(this.employeForm.value,"form ")
+    console.log(this.employeForm.value, 'form ');
     this.submitted = true;
-    this.store.dispatch(employeeFormSuccess({ payload: this.employeForm.value }));
+    this.store.dispatch(
+      employeeFormSuccess({ payload: this.employeForm.value })
+    );
     this.service.setEmpTable(this.employeForm.value);
   }
 }
